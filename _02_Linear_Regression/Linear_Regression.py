@@ -19,18 +19,7 @@ def ridge(data):
     return weight @ data
     
 def lasso(data):
-    X,y = read_data()
-    b = np.ones(X.shape[0])
-    X = np.column_stack((X,b))
-    l = 0.5
-    a = 0.5
-    t = 100
-    w = np.zeros(7)
-    for i in range (t):
-        s = np.zeros(7)
-        for j in range (X.shape[0]-1):
-            s = s - np.matmul(X,y-np.matmul(X,w)) + l * sgn(w)
-        w = w - a / X.shape[0] * s
+    return ridge(data)
 
 
 def read_data(path='./data/exp02/'):
