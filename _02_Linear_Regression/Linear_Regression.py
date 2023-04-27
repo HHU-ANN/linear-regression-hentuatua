@@ -13,9 +13,9 @@ def ridge(data):
     X,y = read_data()
     b = np.ones(X.shape[0])
     X = np.column_stack((X,b))
-    l = 0
+    l = 0.5
     I = np.eye(7)
-    data.append(1)
+    data = numpy.append(data,1)
     weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)+ l*I),np.matmul (X.T,y))
     return weight @ data
     
