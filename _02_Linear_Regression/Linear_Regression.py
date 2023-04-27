@@ -15,7 +15,7 @@ def ridge(data):
     X = np.column_stack((X,b))
     l = 0.5
     I = np.eye(7)
-    weight = np.matmul(np.matmul(np.linalg.inv(np.matmul(X,X.T)+l * I), X),y)
+    weight = np.matmul(np.linalg.inv(np.matmul(X.T,X)+np.matmul(l,I)),np.matmul (X.T,y))
     return weight @ data
     
 def lasso(data):
