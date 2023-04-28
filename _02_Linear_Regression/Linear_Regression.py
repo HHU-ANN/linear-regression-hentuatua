@@ -30,23 +30,19 @@ def lasso(data):
     m = X.shape[0]
     X = np.mat(X)
     y =np.mat(y.reshape(-1,1))
-    print(y.shape)
-    #b = np.ones(X.shape[0])
-    #X = np.column_stack((X,b))
-    X = np.concatenate((np.ones((m,1)),X),axis=1)
-    print(X.shape)
+    b = np.ones(X.shape[0])
+    X = np.column_stack((X,b))
+    m = X.shape[0]
+    n = X.shape[1]
     l = 0.02
-    a = 0.1
-    t = 100
-    #w = np.zeros(7)
+    a = 2e-10
+    t = 10000
+    w = np.zeros(n)
     #w=np.mat(w)
-    #w=w.reshape(-1,1)
-    w=np.mat(np.ones((7,1)))
-    print(w.shape)
+    w=w.reshape(-1,1)
     data = np.append(data,1)
     for i in range (t):
-        gra = X.T*(X*w-y)/m +l * np.sign(w)
-        #gra= (np.matmul(X.T,np.matmul(X,w)-y) /X.shape[0]) + l * np.sign(w)
+        gra= (np.matmul(X.T,np.matmul(X,w)-y) /n) + l * np.sign(w)
         w = w - a * gra
     return data @ w
 
