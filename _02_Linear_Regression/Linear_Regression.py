@@ -30,6 +30,12 @@ def lasso(data):
     m = X.shape[0]
     X = np.mat(X)
     y =np.mat(y.reshape(-1,1))
+    tem = X [:,0] * X [:,1]
+    X = np.column_stack((X,tem))
+    tem = X [:,2] * X [:,3]
+    X = np.column_stack((X,tem))
+    tem = X [:,4] * X [:,5]
+    X = np.column_stack((X,tem))
     b = np.ones(X.shape[0])
     X = np.column_stack((X,b))
     m = X.shape[0]
