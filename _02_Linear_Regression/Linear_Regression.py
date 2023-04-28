@@ -37,7 +37,7 @@ def lasso(data):
     X = np.column_stack((X,b))
     l = 0.5
     a = 0.5
-    t = 100
+    t = 50
     w = np.zeros(10)
     data = np.append(data,[data[0]*data[1],data[2]*data[3],data[4]*data[5],1])
     for i in range (t):
