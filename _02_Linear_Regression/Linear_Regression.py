@@ -27,20 +27,22 @@ def ridge(data):
     
 def lasso(data):
     X,y = read_data()
+    m = X.shape[0]
     X = np.mat(X)
     y =np.mat(y.reshape(-1,1))
     print(y.shape)
-    b = np.ones(X.shape[0])
-    X = np.column_stack((X,b))
+    #b = np.ones(X.shape[0])
+    #X = np.column_stack((X,b))
+    X = np.concatenate((np.ones((m,1)),X),axis=1)
     print(X.shape)
     l = 0.02
     a = 0.1
     t = 100
-    w = np.zeros(7)
-    w=np.mat(w)
-    w=w.reshape(-1,1)
+    #w = np.zeros(7)
+    #w=np.mat(w)
+    #w=w.reshape(-1,1)
+    w=np.mat(np.ones((7,1)))
     print(w.shape)
-    m = X.shape[0]
     data = np.append(data,1)
     for i in range (t):
         gra = X.T*(X*w-y)/m +l * np.sign(w)
