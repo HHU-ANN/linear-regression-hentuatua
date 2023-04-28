@@ -39,8 +39,8 @@ def lasso(data):
     m = X.shape[0]
     n = X.shape[1]
     l = 0.02
-    a = 2e-14
-    t = 10000
+    a = 2e-12
+    t = 100000
     w = np.zeros(n)
     #w=np.mat(w)
     w=w.reshape(-1,1)
