@@ -35,15 +35,16 @@ def lasso(data):
     X = np.column_stack((X,tem))
     b = np.ones(X.shape[0])
     X = np.column_stack((X,b))
-    l = 0.5
-    a = 0.5
+    l = 0.3
+    a = 0.3
     t = 50
-    w = np.eye(10)
+    w = np.zeros(10)
     data = np.append(data,[data[0]*data[1],data[2]*data[3],data[4]*data[5],1])
     for i in range (t):
         s = 2 * np.matmul(X.T,np.matmul(X,w)-y) / X.shape[0] + l * np.sign(w)
         w = w - a  * s
     return w @ data
+
 
 
 def read_data(path='./data/exp02/'):
