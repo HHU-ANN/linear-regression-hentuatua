@@ -38,7 +38,7 @@ def lasso(data):
     l = 0.5
     a = 0.5
     t = 50
-    w = np.zeros(10)
+    w = np.eye(10)
     data = np.append(data,[data[0]*data[1],data[2]*data[3],data[4]*data[5],1])
     for i in range (t):
         s = 2 * np.matmul(X.T,np.matmul(X,w)-y) / X.shape[0] + l * np.sign(w)
