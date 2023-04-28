@@ -27,8 +27,6 @@ def ridge(data):
     
 def lasso(data):
     X,y = read_data()
-    m = X.shape[0]
-    X = np.mat(X)
     y =np.mat(y.reshape(-1,1))
     tem = X [:,0] * X [:,1]
     X = np.column_stack((X,tem))
@@ -41,12 +39,12 @@ def lasso(data):
     m = X.shape[0]
     n = X.shape[1]
     l = 0.02
-    a = 2e-10
+    a = 2e-14
     t = 10000
     w = np.zeros(n)
     #w=np.mat(w)
     w=w.reshape(-1,1)
-    data = np.append(data,1)
+    data = np.append(data,[data[0]*data[1],data[2]*data[3],data[4]*data[5],1])
     for i in range (t):
         gra= (np.matmul(X.T,np.matmul(X,w)-y) /n) + l * np.sign(w)
         w = w - a * gra
