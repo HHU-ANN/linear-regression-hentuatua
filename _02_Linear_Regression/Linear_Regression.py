@@ -38,9 +38,9 @@ def lasso(data):
     X = np.column_stack((X,b))
     m = X.shape[0]
     n = X.shape[1]
-    l = 0.02
-    a = 2e-12
-    t = 100000
+    l = 0.002
+    a = 2e-11
+    t = 10000
     w = np.zeros(n)
     #w=np.mat(w)
     w=w.reshape(-1,1)
