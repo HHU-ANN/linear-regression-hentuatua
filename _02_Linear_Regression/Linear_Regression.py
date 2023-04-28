@@ -36,11 +36,10 @@ def lasso(data):
     X = np.column_stack((X,tem))
     b = np.ones(X.shape[0])
     X = np.column_stack((X,b))
-    X=np.mat(X)
     m = X.shape[0]
     n = X.shape[1]
-    l = 0.002
-    a = 2e-11
+    l = 0.5
+    a = 5e-13
     t = 10000
     w = np.zeros(n)
     #w=np.mat(w)
