@@ -43,7 +43,7 @@ def lasso(data):
     for i in range (t):
         s = np.zeros(10)
         for j in range (X.shape[0]-1):
-            s = s - np.matmul(X,y-np.matmul(X,w)) + l * np.sign(w)
+            s = s - np.matmul(X.T,y-np.matmul(X,w)) + l * np.sign(w)
         w = w - a / X.shape[0] * s
     return w @ data
 
