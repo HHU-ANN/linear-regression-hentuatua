@@ -28,23 +28,29 @@ def ridge(data):
 def lasso(data):
     X,y = read_data()
     y =np.mat(y.reshape(-1,1))
-    tem = X [:,1] * X [:,2]/2
+    tem = X [:,1] * X [:,4] /20
     X = np.column_stack((X,tem))
-    tem = X [:,0] * X [:,3]/2
+    tem = X [:,0] * X [:,3]/20
     X = np.column_stack((X,tem))
-    tem = X [:,4] * X [:,5]/2
+    tem = X [:,2] * X [:,5]/20
+    X = np.column_stack((X,tem))
+    tem = X [:,0] * X [:,0]/100
+    X = np.column_stack((X,tem))
+    tem = X [:,3] * X [:,3]/100
+    X = np.column_stack((X,tem))
+    tem = X [:,5] * X [:,5]/100
     X = np.column_stack((X,tem))
     b = np.ones(X.shape[0])
     X = np.column_stack((X,b))
     m = X.shape[0]
     n = X.shape[1]
-    l = 0.05
-    a = 1e-13
-    t = 50000
+    l = 0.5
+    a = 1e-12
+    t = 10000
     w = np.zeros(n)
     #w=np.mat(w)
     w=w.reshape(-1,1)
-    data = np.append(data,[data[1]*data[2]/2,data[0]*data[3]/2,data[4]*data[5]/2,1])
+    data = np.append(data,[data[1]*data[4]/20,data[0]*data[3]/20,data[2]*data[5]/20,data[0]*data[0]/100,data[3]*data[3]/100,data[5]*data[5]/100,1])
     for i in range (t):
         gra= (np.matmul(X.T,np.matmul(X,w)-y) /n) + l * np.sign(w)
         w = w - a * gra
